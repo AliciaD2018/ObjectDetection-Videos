@@ -3,26 +3,10 @@ import time
 import cv2
 import numpy as np
 import threading
-from moviepy.editor import *
+from multiprocessing import Process
+import os
 
-'''cap = cv2.VideoCapture('3.mp4')
-fps = cap.get(cv2.CAP_PROP_FPS)
-frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-duration = frame_count/fps
-seconds = duration % 60
-cap.release()
-cv2.destroyAllWindows()
-
-v1 = (seconds / 2)
-video = VideoFileClip('3.mp4')
-editado = video.subclip(0,v1)
-editado2 = video.subclip(v1,seconds)
-editado.write_videofile('editado1.mp4',codec='libx264')
-editado2.write_videofile('editado2.mp4',codec='libx264')'''
-
-parte1 = 'editado1.mp4'
-parte2 = 'editado2.mp4'
-path = 'E:/PSO/Imagenes/'
+path = 'C:/Users/alicia/Documents/Semestre II 2021/Principios de Sistemas Operativos/yoloImage/'
 
 def detectar(video):
     start_time = time.time()
@@ -37,8 +21,8 @@ def detectar(video):
     with open(classesFile, 'rt') as f:
         classNames = f.read().rstrip('\n').split('\n')
 
-    modelConfiguration = 'yolov3.cfg'
-    modelWeights = 'yolov3.weights'
+    modelConfiguration = 'config/yolov3.cfg'
+    modelWeights = 'config/yolov3.weights'
 
     net = cv2.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
     net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
@@ -82,7 +66,7 @@ def detectar(video):
 
         return tiempo, nombre
 
-    aux = 1;
+    aux = 1
     contador = 0
     while True:
         success, img = cap.read()
@@ -102,7 +86,7 @@ def detectar(video):
                         lista.append(tiempo)
                         cv2.imwrite(path + str(nombre) + str(tiempo) + '.png', img)
 
-                #cv2.imshow('Image', img)
+                cv2.imshow('Image', img)
                 cv2.waitKey(1)
             else:
                 print("--- %s seconds ---" % (time.time() - start_time))
@@ -112,13 +96,15 @@ def detectar(video):
             aux+=1
 
 if __name__ == '__main__':
-    thread = threading.Thread(target=detectar, args=('editado2.mp4',))
-    thread.start()
+    cores=os.cpu_count()
+    print('Tengo ',cores, ' cores')
+    proceso=Process(target=detectar, args=('3.mp4',))
+    proceso2=Process(target=detectar,args=('Caceria.mp4',))
+    proceso.start()
+    proceso2.start()
+    proceso.join()
 
-    detectar('editado1.mp4')
+    #thread = threading.Thread(target=detectar, args=('3.mp4',))
+    #thread.start()
 
 #------------------------------------------------------------------------
-
-
-
-
