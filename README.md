@@ -4,7 +4,7 @@ Se realiza un análisis de archivos de vídeo. En un inicio vamos a considerar p
 
 ## Instalación
 1. Para el uso del programa se instalan diferentes bibliotecas que se instalan entre ellas `cv2`, `numpy`, `pip` y otras que el IDE pycharm le indica y le facilita la instalación.
-* Un metodo de instalación comun es el `pip install` ###nombre
+* Un metodo de instalación comun es el `pip install "nombre"`
 
 2. Se requieren los archivos `yolov3.cfg` y `yolov3.weight`. Para el `yolov3.weight` se obtiene del siguiente link 
 
