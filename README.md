@@ -1,6 +1,6 @@
-## Tutorial
+#                                    Tutorial
 
-# Instalación
-# Ejecución
-# Pruebas
-# Resultados
+## Instalación
+## Ejecución
+## Pruebas
+## Resultados
