@@ -17,4 +17,9 @@ La ejecución funciona de la siguiente manera:
 * Se realiza la lectura del los videos, estos son procesados mediante la inteligencia de `yolov3.cfg` y `yolov3.weight` los cuales requieren conocer los objetos que se buscan, por lo tanto, se utiliza el archivo  `obj.names` el cual contiene los elementos: rifle, gun y fire.
 
 ## Pruebas
+La ejecución del programa en Python analizó una película entera de aproximadamente una hora y 35 minutos, de la cual se obtuvieron varios resultados, entre ellos el programa realizó unas graficas en los objetos más encontrados según su categoría.
+Estos son las graficas creadas por el mismo código:  
+![Video2TiemposAparición](https://user-images.githubusercontent.com/47863265/137416102-abf55165-8d42-4b3a-b7e3-aafc34d73ed8.png)
+![Video2CantidadApariciones](https://user-images.githubusercontent.com/47863265/137416112-38090e76-bb5c-4c7e-a9c9-e77943debfd6.png)
+
 ## Resultados
