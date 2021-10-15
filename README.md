@@ -1,10 +1,12 @@
 # Proyecto de Multiprocesos   -  Guía de Uso
 Este proyecto fue creado en Python utilizando Yolov3.
 Se realiza un análisis de archivos de vídeo. En un inicio vamos a considerar películas o vídeos con una duración igual o superior a los 60 minutos. El repositorio esta conformado por múltiples archivos. Implementaremos multiprocesamiento a nivel del repositorio y a cada archivo (multiproceso para cada archivo).
+![image](https://user-images.githubusercontent.com/38516078/137434430-c6839686-2953-4cf9-8498-9342f5ac83b8.png)
+
 
 ## Instalación
 1. Instalar [Python 3.7.0](https://www.python.org/downloads/release/python-370/) o Superior
-2. Para el uso del programa se instalan diferentes bibliotecas que se instalan entre ellas `cv2`, `numpy`, `pip` y otras que el [IDE Pycharm](https://www.jetbrains.com/es-es/pycharm/download/#section=windows) le indica y le facilita la instalación.
+2. Para el uso del programa se solicitan diferentes modulos entre ellas `cv2`, `numpy`, `pip` y otras que el [IDE Pycharm](https://www.jetbrains.com/es-es/pycharm/download/#section=windows) le indica y le facilita la instalación.
 3. Un metodo de instalación comun es el `pip install "nombre"`
  ![image](https://user-images.githubusercontent.com/38516078/137266603-be925b19-62c4-4d0c-9248-d79e8f6bedf2.png)
 4. Para la creación de graficos con los resultados se recomienda importar el siguiente modulo de la siguiente forma: 
