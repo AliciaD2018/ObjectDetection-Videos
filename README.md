@@ -8,9 +8,12 @@ Se realiza un análisis de archivos de vídeo. En un inicio vamos a considerar p
 3. Un metodo de instalación comun es el `pip install "nombre"`
  ![image](https://user-images.githubusercontent.com/38516078/137266603-be925b19-62c4-4d0c-9248-d79e8f6bedf2.png)
 4. Para la creación de graficos con los resultados se recomienda importar el siguiente modulo de la siguiente forma: 
-`import matplotlib`
-`matplotlib.use('Agg')`
-`import matplotlib.pyplot as plt`
+```plain
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+
+```
 
 
 4. Se requieren los archivos `yolov3.cfg` y `yolov3.weight`. Para el `yolov3.weight` se obtiene del siguiente link 
