@@ -26,6 +26,7 @@ La ejecución funciona de la siguiente manera:
 * Se realiza la lectura del los videos, estos son procesados mediante la inteligencia de `yolov3.cfg` y `yolov3.weight` los cuales requieren conocer los objetos que se buscan, por lo tanto, se utiliza el archivo  `obj.names` el cual contiene los elementos: rifle, gun y fire.
 
 * ![image](https://user-images.githubusercontent.com/38516078/137435172-512d5410-753a-4e32-a8c2-2b83f1884231.png)
+* ![image](https://habrastorage.org/webt/cl/rf/_j/clrf_jqzkt1qfszivfchhxkujv4.png )
 
 
 ## Pruebas
