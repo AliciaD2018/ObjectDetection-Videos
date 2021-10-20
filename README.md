@@ -42,6 +42,23 @@ Prueba de la detección de un rifle
 ![Rifle4840](https://user-images.githubusercontent.com/47863265/137429452-7c562934-16f5-4c54-9aef-40343404d15e.png)
 
 
+![image](https://user-images.githubusercontent.com/38516078/138114607-57dd1f0c-5d12-43c3-bb08-3ea86068d146.png = 250x250)
+![image](https://user-images.githubusercontent.com/38516078/138114700-865cdd80-4709-44e4-9546-acd68fb1a218.png = 250x250)
+
+
+![image](https://user-images.githubusercontent.com/38516078/138116471-2edd5fc5-57fb-4568-a789-96cbf99384e1.png)
+![image](https://user-images.githubusercontent.com/38516078/138116509-a39b0a7c-28a6-4d4f-b419-f452d93b68b4.png)
+
+
+![Video3CantidadApariciones](https://user-images.githubusercontent.com/38516078/138116549-e384220a-ba8e-4b3e-ad95-ce152b1d3ac1.png)
+![image](https://user-images.githubusercontent.com/38516078/138116584-a8710f37-b290-45bd-8e69-481020a9176a.png)
+
+
+![image](https://user-images.githubusercontent.com/38516078/138117566-aa484da7-3267-4fe7-9087-06a8a5b69143.png)
+![image](https://user-images.githubusercontent.com/38516078/138118090-0666ec85-f23c-4dd6-9214-d4808154af1e.png)
+
+
+
 
 ## Resultados
 De las Gráficas ya mencionadas previamente se obtiene algunos resultados.
