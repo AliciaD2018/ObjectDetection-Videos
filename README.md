@@ -48,6 +48,7 @@ Prueba de la detección de un rifle
 ![borrar1](https://user-images.githubusercontent.com/38516078/138139587-98d9f959-7180-4424-ae2f-ee30eeecc6ac.png)
 ![c2](https://user-images.githubusercontent.com/38516078/138140353-15af031d-2b70-4f0a-8bed-a49ff5ed68ed.jpg)
 ![c3](https://user-images.githubusercontent.com/38516078/138141040-68226244-2d20-4249-8778-763920917709.png)
+![c4](https://user-images.githubusercontent.com/38516078/138144551-5310b2a9-6684-4365-9779-3c33a0ebc108.png)
 
 
 
