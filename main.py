@@ -15,6 +15,21 @@ path1 = pathSave1 + '/Imagenes1/'
 path2 = pathSave1 + '/Imagenes2/'
 path3 = pathSave1 + '/Imagenes3/'
 
+#Metodo para leer los archivos de texto y capturar el tiempo
+def leer_ultimas_lineas(nombre,nombre2,nombre3, n):
+    with open(nombre) as fname:
+        lineas = [lineas.strip('\n') for lineas in fname.readlines()]
+        r1=int(lineas[-n:][0])
+
+    with open(nombre2) as fname:
+        lineas2 = [lineas2.strip('\n') for lineas2 in fname.readlines()]
+        r2 = int(lineas2[-n:][0])
+
+    with open(nombre3) as fname:
+        lineas3 = [lineas3.strip('\n') for lineas3 in fname.readlines()]
+        r3 = int(lineas3[-n:][0])
+
+    return [r1,r2,r3]
 
 def detectar(video, path, nombre):
     tiempo_final = 0
@@ -86,6 +101,7 @@ def detectar(video, path, nombre):
 
         return tiempo, nombre
 
+    #Metodo para graficar los resultados obtenidos por cada video
     def graficarDatos(nombre, tiempoFinal, cantidadPistolas, cantidadRifles, cantidadFuego):
         dura=round(tiempoFinal)#Obtiene solo la parte entera
         print("-------------------------------")
@@ -96,11 +112,15 @@ def detectar(video, path, nombre):
         print("Fuego: " + str(cantidadFuego))
         print("-------------------------------")
 
+        #Escritura de la cantidad de elementos encontrados en el video
         file1.write(str(cantidadPistolas)+'\n')
         file1.write(str(cantidadRifles) + '\n')
         file1.write(str(cantidadFuego) + '\n')
+        file1.write(str(dura) + '\n') #cantidad de segundos totales del video procesado.
         file1.close()
 
+        # ---------------------------------GRAFICA CANTIDAD DE ELEMENTOS------------------------------
+        #Inicio de la declaración de la grafica
         pathSave = os.getcwd()
         fig = plt.figure(u'Gráfica de barras')  # Figure
         ax = fig.add_subplot(111)  # Axes coordenada dentro de la ventana.
@@ -114,8 +134,32 @@ def detectar(video, path, nombre):
         ax.set_xticks(xx)
         ax.set_xticklabels(nombres)
         ax.grid(axis='y', color='gray', linestyle='dashed')
-        plt.title('Cantidad de aparición ' + nombreVideo)
+        plt.title('Analisis-CantidadElementos ' + nombreVideo)
         plt.savefig(pathSave+'/Graficas/'+nombre+'CantidadApariciones.png')
+        #Fin declaración grafica
+
+        #---------------------------------GRAFICA GENERAL DE TIEMPO-----------------------------------
+
+        tiempoGeneral = leer_ultimas_lineas("Video1.txt", "Video2.txt", "Video3.txt", 1)
+        # Inicio de la declaración de la GENERAL
+        pathSave = os.getcwd()
+        plt.clf()
+        fig1 = plt.figure(u'Gráfica')  # Figure
+        ax1 = fig1.add_subplot(111)  # Axes coordenada dentro de la ventana.
+
+        nombres1 = ['Video1', 'Video2', 'Video3']
+        datos1 = [tiempoGeneral[0], tiempoGeneral[1], tiempoGeneral[2]]
+        colores1 = ["blue", "red", "green"]
+        xx1 = range(len(datos1))
+
+        ax1.bar(xx1, datos1, color=colores1, width=0.5, align='center')
+        ax1.set_xticks(xx1)
+        ax1.set_xticklabels(nombres1)
+        ax1.grid(axis='y', color='gray', linestyle='dashed')
+
+        plt.title('Tiempo General ')
+        plt.savefig(pathSave + '/Graficas/' + 'General.png')
+        # Fin declaración grafica
 
         #plt.show()
 
@@ -152,6 +196,9 @@ def detectar(video, path, nombre):
                 cv2.imshow('Image', img)
                 cv2.waitKey(1)
             else:
+                # -----------------------------GRAFICA RANGO(TIEMPO) DE APARICION-----------------------------------
+
+                # Graficación del tiempo(rango) en el que aparecen los objetos
                 tiempo_final = (time.time() - start_time)
                 fig, ax = plt.subplots()
                 temperaturas2 = dict(Pistolas=listP, Rifles=listR, Fuegos=listF)
@@ -172,6 +219,7 @@ def detectar(video, path, nombre):
             aux+=1
     return cantidad_pistolas, cantidad_rifles, cantidad_fuego, tiempo_final
 
+
 if __name__ == '__main__':
     process1 = []
     process2 = []
@@ -180,74 +228,76 @@ if __name__ == '__main__':
         executor.submit(detectar, '5.mp4', path2, 'Video2')
         executor.submit(detectar, '6.mp4', path3, 'Video3')
 
-#     p1 = 0
-#     r1 = 0
-#     f1 = 0
-#
-#     p2 = 0
-#     r2 = 0
-#     f2 = 0
-#
-#     p3 = 0
-#     r3 = 0
-#     f3 = 0
-#
-#     v1 = open('Video1.txt','r')
-#     cont = 1
-#     for line in v1:
-#         if cont == 1:
-#             p1 = int(line)
-#             cont = cont + 1
-#         elif cont == 2:
-#             r1 = int(line)
-#             cont = cont + 1
-#         else:
-#             f1 = int(line)
-#             cont = 1
-#     v2 = open('Video2.txt','r')
-#     for line in v2:
-#         if cont == 1:
-#             p2 = int(line)
-#             cont = cont + 1
-#         elif cont == 2:
-#             r2 = int(line)
-#             cont = cont + 1
-#         else:
-#             f2 = int(line)
-#             cont = 1
-#     v3 = open('Video3.txt', 'r')
-#     for line in v3:
-#         if cont == 1:
-#             p3 = int(line)
-#             cont = cont + 1
-#         elif cont == 2:
-#             r3 = int(line)
-#             cont = cont + 1
-#         else:
-#             f3 = int(line)
-#             cont = 1
-#
-#     pTotal = p1 + p2 + p3
-#     rTotal = r1 + r2 + p3
-#     fTotal = f1 + f2 + p3
-#
-#
-#     pathSave = os.getcwd()
-#     print(pathSave)
-#     fig = plt.figure(u'Clases Sumadas')  # Figure
-#     ax = fig.add_subplot(111)  # Axes coordenada dentro de la ventana.
-#
-#     nombres = ['Pistolas', 'Rifles', 'Fuego']
-#     datos = [pTotal, rTotal, fTotal]
-#     xx = range(len(datos))
-#     colores = ["blue", "red", "green"]
-#     ax.bar(xx, datos, color=colores, width=0.5, align='center')
-#     ax.set_xticks(xx)
-#     ax.set_xticklabels(nombres)
-#     ax.grid(axis='y', color='gray', linestyle='dashed')
-#     plt.title("Datos Generales")
-#     plt.savefig(pathSave+'\Graficas\ApariciónGeneralObjetos.png')
-#
-#
+
+    p1 = 0
+    r1 = 0
+    f1 = 0
+
+    p2 = 0
+    r2 = 0
+    f2 = 0
+
+    p3 = 0
+    r3 = 0
+    f3 = 0
+
+    v1 = open('Video1.txt','r')
+    cont = 1
+    for line in v1:
+        if cont == 1:
+            p1 = int(line)
+            cont = cont + 1
+        elif cont == 2:
+            r1 = int(line)
+            cont = cont + 1
+        elif cont == 3:
+            f1 = int(line)
+            cont = 1
+    v2 = open('Video2.txt','r')
+    for line in v2:
+        if cont == 1:
+            p2 = int(line)
+            cont = cont + 1
+        elif cont == 2:
+            r2 = int(line)
+            cont = cont + 1
+        elif cont == 3:
+            f2 = int(line)
+            cont = 1
+    v3 = open('Video3.txt', 'r')
+    for line in v3:
+        if cont == 1:
+            p3 = int(line)
+            cont = cont + 1
+        elif cont == 2:
+            r3 = int(line)
+            cont = cont + 1
+        elif cont == 3:
+            f3 = int(line)
+            cont = 1
+
+    pTotal = p1 + p2 + p3
+    rTotal = r1 + r2 + p3
+    fTotal = f1 + f2 + p3
+
+
+    pathSave = os.getcwd()
+    print(pathSave)
+    plt.clf()
+    fig = plt.figure(u'Clases Sumadas')  # Figure
+    ax = fig.add_subplot(111)  # Axes coordenada dentro de la ventana.
+
+    nombres = ['Pistolas', 'Rifles', 'Fuego']
+    datos = [pTotal, rTotal, fTotal]
+    xx = range(len(datos))
+    colores = ["blue", "red", "green"]
+    ax.bar(xx, datos, color=colores, width=0.5, align='center')
+    ax.set_xticks(xx)
+    ax.set_xticklabels(nombres)
+    ax.grid(axis='y', color='gray', linestyle='dashed')
+    plt.title("Datos Generales")
+    plt.savefig(pathSave+'\Graficas\ApariciónGeneralObjetos.png')
+
+
 # #------------------------------------------------------------------------
 
